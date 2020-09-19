@@ -9,6 +9,27 @@ Compared to the source code of the old [Mask_RCNN](https://github.com/matterport
 
 The [Mask-RCNN-TF2](https://github.com/ahmedfgad/Mask-RCNN-TF2) project is tested against **TensorFlow 2.0.0**, **Keras 2.2.4-tf**, and **Python 3.7.3**. Note that the project will not run in TensorFlow 1.0.
 
+The **kangaroo-transfer-learning** directory has both the data and code for training and testing the Mask R-CNN model using TensorFlow 2.0. Here is the content of the directory:
+
+```
+kangaroo-transfer-learning:
+	kangaroo:
+		images:
+		annots:
+	kangaroo_training.py
+	kangaroo_prediction.py
+```
+
+The `kangaroo_training.py` script does transfer learning to a pre-trained weights using the COCO dataset. Download these weights from here: https://github.com/matterport/Mask_RCNN/releases/download/v2.0/mask_rcnn_coco.h5
+
+After the transfer learning completes, the trained weights are saved in the `Kangaro_mask_rcnn_trained.h5` file. 
+
+The `kangaroo_prediction.py` makes prediction based on the trained weights.
+
+![Kangaroo Test Image](assets/kangaro-test.png)
+
+Note that it is not required to install the project. It is enough to copy the `mrcnn` directory to where you are using it.
+
 Note that the [Mask-RCNN-TF2](https://github.com/ahmedfgad/Mask-RCNN-TF2) project uses the same training and testing code as in the old project.
 
 ![Instance Segmentation Sample](assets/street.png)
