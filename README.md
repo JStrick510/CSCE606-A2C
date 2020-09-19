@@ -1,6 +1,15 @@
 # Mask R-CNN for Object Detection and Segmentation
 
-This is an implementation of [Mask R-CNN](https://arxiv.org/abs/1703.06870) on Python 3, Keras, and TensorFlow. The model generates bounding boxes and segmentation masks for each instance of an object in the image. It's based on Feature Pyramid Network (FPN) and a ResNet101 backbone.
+The [Mask-RCNN-TF2](https://github.com/ahmedfgad/Mask-RCNN-TF2) project edits the original [Mask_RCNN](https://github.com/matterport/Mask_RCNN) project, which only supports TensorFlow 1.0, so that it works on TensorFlow 2.0. Based on this new project, the [Mask R-CNN](https://arxiv.org/abs/1703.06870) can be trained and tested (i.e make predictions) in TensorFlow 2.0. The Mask R-CNN model generates bounding boxes and segmentation masks for each instance of an object in the image. It's based on Feature Pyramid Network (FPN) and a ResNet101 backbone.
+
+Compared to the source code of the old [Mask_RCNN](https://github.com/matterport/Mask_RCNN) project, the [Mask-RCNN-TF2](https://github.com/ahmedfgad/Mask-RCNN-TF2) project edits the following 2 modules:
+
+1. `model.py`
+2. `utils.py`
+
+The [Mask-RCNN-TF2](https://github.com/ahmedfgad/Mask-RCNN-TF2) project is tested against **TensorFlow 2.0.0**, **Keras 2.2.4-tf**, and **Python 3.7.3**. Note that the project will not run in TensorFlow 1.0.
+
+Note that the [Mask-RCNN-TF2](https://github.com/ahmedfgad/Mask-RCNN-TF2) project uses the same training and testing code as in the old project.
 
 ![Instance Segmentation Sample](assets/street.png)
 
@@ -39,8 +48,6 @@ This notebooks inspects the weights of a trained model and looks for anomalies a
 To help with debugging and understanding the model, there are 3 notebooks 
 ([inspect_data.ipynb](samples/coco/inspect_data.ipynb), [inspect_model.ipynb](samples/coco/inspect_model.ipynb),
 [inspect_weights.ipynb](samples/coco/inspect_weights.ipynb)) that provide a lot of visualizations and allow running the model step by step to inspect the output at each point. Here are a few examples:
-
-
 
 ## 1. Anchor sorting and filtering
 Visualizes every step of the first stage Region Proposal Network and displays positive and negative anchors along with anchor box refinement.
@@ -164,7 +171,7 @@ Contributions to this repository are welcome. Examples of things you can contrib
 You can also [join our team](https://matterport.com/careers/) and help us build even more projects like this one.
 
 ## Requirements
-Python 3.4, TensorFlow 1.3, Keras 2.0.8 and other common packages listed in `requirements.txt`.
+Python 3 (tested on Python 3.7.3), TensorFlow 2.0.0, Keras 2.2.4-tf and other common packages listed in `requirements.txt`.
 
 ### MS COCO Requirements:
 To train or test on MS COCO, you'll also need:
@@ -187,7 +194,7 @@ If you use Docker, the code has been verified to work on
 3. Run setup from the repository root directory
     ```bash
     python3 setup.py install
-    ``` 
+    ```
 3. Download pre-trained COCO weights (mask_rcnn_coco.h5) from the [releases page](https://github.com/matterport/Mask_RCNN/releases).
 4. (Optional) To train or test on MS COCO install `pycocotools` from one of these repos. They are forks of the original pycocotools with fixes for Python3 and Windows (the official repo doesn't seem to be active anymore).
 

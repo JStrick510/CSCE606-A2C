@@ -32,20 +32,18 @@ except Exception:
     install_reqs = []
 
 setup(
-    name='mask-rcnn',
-    version='2.1',
-    url='https://github.com/matterport/Mask_RCNN',
-    author='Matterport',
-    author_email='waleed.abdulla@gmail.com',
+    name='mask-rcnn-tf2',
+    version='1.0',
+    url='https://github.com/ahmedfgad/Mask-RCNN-TF2',
+    author='Ahmed Fawzy Gad',
+    author_email='ahmed.f.gad@gmail.com',
     license='MIT',
-    description='Mask R-CNN for object detection and instance segmentation',
+    description='Object Detecting using Mask R-CNN in TensorFlow 2.0',
     packages=["mrcnn"],
     install_requires=install_reqs,
     include_package_data=True,
     python_requires='>=3.4',
-    long_description="""This is an implementation of Mask R-CNN on Python 3, Keras, and TensorFlow. 
-The model generates bounding boxes and segmentation masks for each instance of an object in the image. 
-It's based on Feature Pyramid Network (FPN) and a ResNet101 backbone.""",
+    long_description="""This is a modified version of this project (https://github.com/matterport/Mask_RCNN) so that the Mask R-CNN model works on TensorFlow 2.0. """,
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
@@ -62,7 +60,7 @@ It's based on Feature Pyramid Network (FPN) and a ResNet101 backbone.""",
         "Topic :: Scientific/Engineering :: Image Segmentation",
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
     ],
-    keywords="image instance segmentation object detection mask rcnn r-cnn tensorflow keras",
+    keywords="image instance region segmentation object detection Mask-RCNN Mask RCNN R-CNN TensorFlow 2.0 Keras",
 )
