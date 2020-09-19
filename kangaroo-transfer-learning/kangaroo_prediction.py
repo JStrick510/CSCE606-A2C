@@ -28,7 +28,7 @@ model = mrcnn.model.MaskRCNN(mode="inference",
                              model_dir=os.getcwd())
 
 # Load the weights into the model.
-model.load_weights(filepath="mask_rcnn_coco.h5", 
+model.load_weights(filepath="Kangaro_mask_rcnn_trained.h5", 
                    by_name=True)
 
 # load the input image, convert it from BGR to RGB channel
