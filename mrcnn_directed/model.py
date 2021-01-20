@@ -251,6 +251,25 @@ def clip_boxes_graph(boxes, window):
     clipped.set_shape((clipped.shape[0], 4))
     return clipped
 
+# ********** Directed Mask R-CNN **********
+class DirectedProposalLayer(KE.Layer):
+    def __init__(self, proposal_count, nms_threshold, config=None, **kwargs):
+        super(DirectedProposalLayer, self).__init__(**kwargs)
+        self.config = config
+
+    def call(self, inputs):
+        zeros = np.zeros(shape=(1, self.config.POST_NMS_ROIS_INFERENCE, 4), dtype=np.float32)
+
+        zeros[0, 0, :] = [0.0,  0.0 ,  0.2,   0.3]
+        zeros[0, 1, :] = [0.42, 0.02,  0.8,   0.267]
+        zeros[0, 2, :] = [0.12, 0.52,  0.55,  0.84]
+        zeros[0, 3, :] = [0.61, 0.71,  0.87,  0.21]
+        zeros[0, 4, :] = [0.074, 0.83, 0.212, 0.94]
+
+        proposals = tf.convert_to_tensor(zeros)
+
+        return proposals
+# ********** Directed Mask R-CNN **********
 
 class ProposalLayer(KE.Layer):
     """Receives anchor scores and selects a subset to pass as proposals
@@ -326,6 +345,7 @@ class ProposalLayer(KE.Layer):
             return proposals
         proposals = utils.batch_slice([boxes, scores], nms,
                                       self.config.IMAGES_PER_GPU)
+
         """
         # ********** Directed Mask R-CNN **********
         zeros = np.zeros(shape=(1, 1000, 4), dtype=np.float32)
@@ -336,6 +356,20 @@ class ProposalLayer(KE.Layer):
 
         proposals = KL.Multiply()([proposals, tf.convert_to_tensor(zeros)])
         proposals = KL.Add(name="proposals_add_layer")([proposals, tf.convert_to_tensor(prop)])
+        # ********** Directed Mask R-CNN **********
+        """
+        
+        """
+        # ********** Directed Mask R-CNN **********
+        zeros = np.zeros(shape=(1, self.config.POST_NMS_ROIS_INFERENCE, 4), dtype=np.float32)
+
+        zeros[0, 0, :] = [0.0,  0.0 ,  0.2,   0.3]
+        zeros[0, 1, :] = [0.42, 0.02,  0.8,   0.267]
+        zeros[0, 2, :] = [0.12, 0.52,  0.55,  0.84]
+        zeros[0, 3, :] = [0.61, 0.71,  0.87,  0.21]
+        zeros[0, 4, :] = [0.074, 0.83, 0.212, 0.94]
+
+        proposals = tf.convert_to_tensor(zeros)
         # ********** Directed Mask R-CNN **********
         """
 
