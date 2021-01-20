@@ -43,10 +43,10 @@ r = r[0]
 
 r2 = r.copy()
 
-r2[:, 0] = r2[:, 0] * 291.0
-r2[:, 2] = r2[:, 2] * 291.0
-r2[:, 1] = r2[:, 1] * 445.0
-r2[:, 3] = r2[:, 3] * 445.0
+r2[:, 0] = r2[:, 0] * image.shape[0]
+r2[:, 2] = r2[:, 2] * image.shape[0]
+r2[:, 1] = r2[:, 1] * image.shape[1]
+r2[:, 3] = r2[:, 3] * image.shape[1]
 
 # Visualize the detected objects.
 mrcnn_directed.visualize.display_instances(image=image, 
