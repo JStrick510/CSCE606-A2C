@@ -46,9 +46,9 @@ class SimpleConfig(mrcnn_directed.config.Config):
 
 # Initialize the Mask R-CNN model for inference and then load the weights.
 # This step builds the Keras model architecture.
-model = mrcnn_directed.model.MaskRCNNDirected(mode="inference", 
-                                              config=SimpleConfig(),
-                                              model_dir=os.getcwd())
+model = mrcnn_directed.model.MaskRCNNDirectedRPN(mode="inference", 
+                                                 config=SimpleConfig(),
+                                                 model_dir=os.getcwd())
 
 # Load the weights into the model.
 model.load_weights(filepath="mask_rcnn_coco.h5", 
@@ -59,15 +59,18 @@ image = cv2.imread("test.jpg")
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 # Perform a forward pass of the network to obtain the results
-r = model.detect([image])
+r = model.detect([image], verbose=0)
 
 # Get the results for the first image.
 r = r[0]
 
+r2 = r.copy()
+
+r2[:, 0] = r2[:, 0] * image.shape[0]
+r2[:, 2] = r2[:, 2] * image.shape[0]
+r2[:, 1] = r2[:, 1] * image.shape[1]
+r2[:, 3] = r2[:, 3] * image.shape[1]
+
 # Visualize the detected objects.
-mrcnn_directed.visualize.display_instances(image=image, 
-                                           boxes=r['rois'], 
-                                           masks=r['masks'], 
-                                           class_ids=r['class_ids'], 
-                                           class_names=CLASS_NAMES, 
-                                           scores=r['scores'])
+mrcnn_directed.visualize.display_instances_RPN(image=image, 
+                                               boxes=r2)
