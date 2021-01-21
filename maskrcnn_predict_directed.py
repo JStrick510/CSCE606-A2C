@@ -15,17 +15,17 @@ POST_NMS_ROIS_INFERENCE = 5
 
 REGION_PROPOSALS = numpy.zeros(shape=(1, POST_NMS_ROIS_INFERENCE, 4), dtype=numpy.float32)
 
-REGION_PROPOSALS[0, 0, :] = [0.0,  0.0 ,  0.2,   0.3]
-REGION_PROPOSALS[0, 1, :] = [0.42, 0.02,  0.8,   0.267]
-REGION_PROPOSALS[0, 2, :] = [0.12, 0.52,  0.55,  0.84]
-REGION_PROPOSALS[0, 3, :] = [0.61, 0.71,  0.87,  0.21]
-REGION_PROPOSALS[0, 4, :] = [0.074, 0.83, 0.212, 0.94]
+# REGION_PROPOSALS[0, 0, :] = [0.0,  0.0 ,  0.2,   0.3]
+# REGION_PROPOSALS[0, 1, :] = [0.42, 0.02,  0.8,   0.267]
+# REGION_PROPOSALS[0, 2, :] = [0.12, 0.52,  0.55,  0.84]
+# REGION_PROPOSALS[0, 3, :] = [0.61, 0.71,  0.87,  0.21]
+# REGION_PROPOSALS[0, 4, :] = [0.074, 0.83, 0.212, 0.94]
 
-# REGION_PROPOSALS[0, 0, :] = [0.49552074, 0.        , 0.53763664, 0.09105143]
-# REGION_PROPOSALS[0, 1, :] = [0.5294977 , 0.39210293, 0.63644147, 0.44242138]
-# REGION_PROPOSALS[0, 2, :] = [0.36204672, 0.40500385, 0.6706183 , 0.54514766]
-# REGION_PROPOSALS[0, 3, :] = [0.48107424, 0.08110721, 0.51513755, 0.17086479]
-# REGION_PROPOSALS[0, 4, :] = [0.45803332, 0.15717855, 0.4798005 , 0.20352092]
+REGION_PROPOSALS[0, 0, :] = [0.49552074, 0.        , 0.53763664, 0.09105143]
+REGION_PROPOSALS[0, 1, :] = [0.5294977 , 0.39210293, 0.63644147, 0.44242138]
+REGION_PROPOSALS[0, 2, :] = [0.36204672, 0.40500385, 0.6706183 , 0.54514766]
+REGION_PROPOSALS[0, 3, :] = [0.48107424, 0.08110721, 0.51513755, 0.17086479]
+REGION_PROPOSALS[0, 4, :] = [0.45803332, 0.15717855, 0.4798005 , 0.20352092]
 
 class SimpleConfig(mrcnn_directed.config.Config):
     # Give the configuration a recognizable name
@@ -71,3 +71,7 @@ mrcnn_directed.visualize.display_instances(image=image,
                                            class_ids=r['class_ids'], 
                                            class_names=CLASS_NAMES, 
                                            scores=r['scores'])
+print(r['rois'].shape)
+print(r['masks'].shape)
+print(r['class_ids'].shape)
+print(r['scores'].shape)
