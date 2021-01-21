@@ -71,7 +71,3 @@ mrcnn_directed.visualize.display_instances(image=image,
                                            class_ids=r['class_ids'], 
                                            class_names=CLASS_NAMES, 
                                            scores=r['scores'])
-print(r['rois'].shape)
-print(r['masks'].shape)
-print(r['class_ids'].shape)
-print(r['scores'].shape)
