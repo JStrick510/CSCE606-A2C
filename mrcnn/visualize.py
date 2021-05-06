@@ -85,7 +85,8 @@ def display_instances(image, boxes, masks, class_ids, class_names,
                       figsize=(16, 16), ax=None,
                       show_mask=True, show_mask_polygon=True, show_bbox=True, 
                       colors=None, captions=None, show_caption=True, save_fig_path=None,
-                      filter_classes=None):
+                      filter_classes=None, min_score=None):
+
     """
     boxes: [num_instance, (y1, x1, y2, x2, class_id)] in image coordinates.
     masks: [height, width, num_instances]
@@ -101,6 +102,7 @@ def display_instances(image, boxes, masks, class_ids, class_names,
     show_caption (Ahmed Gad): Whether to show the caption or not
     save_fig_path (Ahmed Gad): Path to save the figure
     filter_classes: A list of the class IDs to show in the result. Any object with a class ID not included in this list will not be considered.
+    min_score (Ahmed Gad): The minimum score of the objects to display.
     """
 
     # Number of instances
@@ -134,6 +136,14 @@ def display_instances(image, boxes, masks, class_ids, class_names,
             pass
         else:
             continue
+        
+        if min_score is None:
+            pass
+        elif scores is None:
+            pass
+        elif scores[i] < min_score:
+            continue
+
         color = colors[i]
 
         # Bounding box
