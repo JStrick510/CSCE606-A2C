@@ -17,9 +17,6 @@ class KangarooDataset(mrcnn.utils.Dataset):
 		for filename in os.listdir(images_dir):
 			image_id = filename[:-4]
 
-			if image_id in ['00090']:
-				continue
-
 			if is_train and int(image_id) >= 150:
 				continue
 
