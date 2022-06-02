@@ -7,7 +7,7 @@ Compared to the source code of the old [Mask_RCNN](https://github.com/matterport
 1. `model.py`
 2. `utils.py`
 
-The [Mask-RCNN-TF2](https://github.com/ahmedfgad/Mask-RCNN-TF2) project is tested against **TensorFlow 2.0.0**, **Keras 2.2.4-tf**, and **Python 3.7.3**. Note that the project will not run in TensorFlow 1.0.
+The [Mask-RCNN-TF2](https://github.com/ahmedfgad/Mask-RCNN-TF2) project is tested against **TensorFlow 2.0.0**, **Keras 2.2.4** (also **Keras 2.3.1**), and **Python 3.7.3** (also **Python 3.6.9** and **Python 3.6.13**). Note that the project will not run in TensorFlow 1.0.
 
 # Use the Project Without Installation
 
