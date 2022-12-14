@@ -32,7 +32,7 @@ model.load_weights('trained.h5', by_name=True)
 
 #################################################
 #Test on a single image
-test_img = skimage.io.imread("test/g1_003.png")
+test_img = skimage.io.imread("dataset/test/g1_003.png")
 #if model is color do nothing, if black and white get correct color channels
 bw = False
 if bw:
